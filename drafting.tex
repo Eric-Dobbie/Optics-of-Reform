@@ -1,0 +1,168 @@
+% ============================================================
+% drafting.tex
+% PAP expansion sections for "The Optics of Reform"
+% These subsections are ready to be incorporated into main.tex
+% ============================================================
+
+% ------------------------------------------------------------------
+% A. POWER ANALYSIS AND SAMPLE SIZE JUSTIFICATION
+% ------------------------------------------------------------------
+\subsection{Power Analysis and Sample Size}
+
+We pre-specify a minimum detectable effect (MDE) analysis to justify our target sample of $N = 1{,}200$ recruited via Prolific.
+All calculations assume a two-sided test with $\alpha = 0.05$ and power $1 - \beta = 0.80$.
+
+\paragraph{Design and allocation.}
+The experiment uses three equally sized arms (Control, Race Treatment, Gender Treatment), each assigned approximately 400 respondents.
+We oversample Black respondents to constitute at least 30\% of the full sample ($n \approx 360$), ensuring adequate power for the subgroup test in Hypothesis 1.
+Block randomization is conducted within strata defined by race and party identification, following the procedure detailed in the survey instrument.
+
+\paragraph{Outcome variance assumption.}
+Our primary outcomes are 7-point Likert items.
+Prior survey experiments on police trust report standard deviations in the range of 1.3--1.8 scale points \citep{Stauffer2023, Peyton2022}.
+We adopt a conservative assumption of $\sigma = 1.5$ for the main power calculations and conduct sensitivity analyses under $\sigma \in \{1.0, 1.5, 2.0\}$.
+
+\paragraph{Main effect MDE.}
+For a two-sample comparison between one treatment arm and the control ($n_1 = n_2 = 400$), the MDE is:
+\begin{equation}
+    \text{MDE} = (z_{\alpha/2} + z_{\beta})\,\sigma\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
+               = (1.96 + 0.84)(1.5)\sqrt{\frac{1}{400} + \frac{1}{400}}
+               \approx 0.30 \text{ scale points}.
+\end{equation}
+This corresponds to a standardized effect size of $d \approx 0.20$, which is below the smallest substantively meaningful effect identified in related work \citep{Stauffer2023}.
+
+\paragraph{Subgroup MDE.}
+For Hypothesis 1 (Black respondents only), the relevant subsample consists of Black respondents in the Race Treatment arm and the Control arm.
+Assuming 30\% Black respondents in each arm ($n_{\text{sub}} \approx 120$ per arm), the subgroup MDE is approximately $0.54$ scale points ($d \approx 0.36$).
+For Hypothesis 2 (women respondents), we assume women constitute approximately 50\% of the sample ($n_{\text{sub}} \approx 200$ per arm), yielding an MDE of approximately $0.42$ scale points ($d \approx 0.28$).
+
+\paragraph{Pilot study.}
+Prior to fielding the full study, we will conduct a pilot with $n = 100$ respondents (not included in the analysis) to: (1) assess treatment uptake and vignette comprehension, (2) estimate the empirical standard deviation of the primary outcomes, and (3) update MDE estimates using the observed $\hat{\sigma}$.
+If the pilot $\hat{\sigma}$ substantially exceeds 1.5, we will increase $N$ accordingly before pre-registration closes.
+
+\paragraph{Covariate adjustment.}
+The primary OLS specification includes pre-treatment covariates (see Section~\ref{sec:empirical-strategy}).
+Covariate adjustment is expected to reduce the residual variance, effectively improving power beyond the unadjusted calculations above.
+We treat the unadjusted MDE as a conservative bound.
+
+% ------------------------------------------------------------------
+% B. PRE-SPECIFIED HETEROGENEOUS TREATMENT EFFECTS
+% ------------------------------------------------------------------
+\subsection{Pre-Specified Heterogeneous Treatment Effects}
+\label{sec:hte}
+
+Beyond the subgroup hypotheses specified in H1 and H2, we pre-specify an exploratory analysis of heterogeneous treatment effects (HTEs) using a Generalized Random Forest \citep[GRF;][]{Athey2019}.
+This approach estimates conditional average treatment effects (CATEs) without requiring us to pre-specify the functional form of interactions, and naturally addresses concerns about multiple testing by constructing a single model over all covariates simultaneously.
+
+\paragraph{Covariates of interest.}
+We examine treatment effect heterogeneity along the following pre-specified dimensions:
+\begin{enumerate}
+    \item \textit{Race/ethnicity} (primary, Hypotheses 1 and 2 as defined above)
+    \item \textit{Gender} (primary, Hypothesis 2)
+    \item \textit{Party identification} (Democrat, Republican, Independent/Lean/Neither) --- partisanship may moderate receptiveness to diversity-framed institutional signals
+    \item \textit{Prior police contact} --- respondents who report personal or family use-of-force experience may exhibit attenuated treatment effects due to entrenched distrust
+    \item \textit{Pre-treatment diversity attitudes} --- higher baseline support for diversity in policing may produce ceiling effects or amplify treatment responses
+    \item \textit{Political ideology} --- liberal respondents may be more receptive to the reform framing
+\end{enumerate}
+
+\paragraph{Estimation.}
+We estimate a causal forest using the \texttt{grf} package in R \citep{tibshirani2022grf}.
+For each treatment contrast (Race vs.\ Control; Gender vs.\ Control), we estimate a separate causal forest with outcomes $\{$\texttt{Trust\_General}, \texttt{Trust\_Self}, \texttt{Trust\_Hiring}$\}$.
+Variance estimation uses the built-in honest splitting and out-of-bag predictions.
+We summarize CATE heterogeneity using the best linear projection \citep[BLP;][]{Semenova2021}, which regresses estimated CATEs on the covariates of interest and is robust to model misspecification.
+The BLP coefficients and their standard errors are reported in the main text.
+
+\paragraph{Confirmatory vs.\ exploratory.}
+HTE results are classified as \textit{exploratory}. The confirmatory hypotheses remain H1 and H2 as stated.
+No multiplicity correction is applied within the HTE analysis; we report effect sizes and confidence intervals and note that these findings should be replicated.
+
+% ------------------------------------------------------------------
+% C. MECHANISM TESTS
+% ------------------------------------------------------------------
+\subsection{Mechanism Tests}
+\label{sec:mechanisms}
+
+We hypothesize three causal mechanisms through which the diversity frame may affect trust.
+These mechanisms generate distinct, testable empirical implications, which we pre-specify below.
+
+\paragraph{Mechanism 1 --- Identity Activation.}
+\textit{Prediction:} The treatment effect on trust is mediated by an increase in perceived procedural justice.
+Black respondents assigned to the Race Treatment will report higher \texttt{Procedural\_Justice} scores than controls, and this increase will partially or fully account for the trust effect.
+We test this using the \texttt{mediation} package in R \citep{Tingley2014}, estimating the average causal mediation effect (ACME) and direct effect with 1,000 bootstrap draws under the sequential ignorability assumption.
+We conduct the analysis separately for Black respondents (H1 mechanism) and women respondents (H2 mechanism).
+
+\paragraph{Mechanism 2 --- Reform Intent Signal.}
+\textit{Prediction:} Any signal of institutional reform --- regardless of the specific diversity frame --- increases trust through a general willingness-to-change inference.
+Under this mechanism, the effect on \texttt{Police\_Resources} should be positive and of similar magnitude across both treatment arms.
+We test this by comparing the treatment coefficients on \texttt{Police\_Resources} across arms using a seemingly unrelated regression or a joint Wald test.
+A similar effect size across both treatments is consistent with the reform signal mechanism; a larger effect for the matched-identity treatment (Black respondents in Race arm; women in Gender arm) would be more consistent with Mechanism 1.
+
+\paragraph{Mechanism 3 --- Cynicism.}
+\textit{Prediction:} Among respondents with high prior distrust or who perceive reform signals as symbolic, the treatment effect is null or negative.
+We proxy cynicism using: (a) the pre-treatment item ``Adding people of color makes policing more fair'' (reverse-coded for cynical respondents) and (b) prior use-of-force contact.
+We estimate heterogeneous effects within each of these subgroups.
+
+\paragraph{Open-ended mechanism test.}
+The survey includes an open-ended item (\texttt{Explain}) asking respondents to describe their reasoning.
+We use a Bradley-Terry pairwise comparison model \citep{Bradley1952} to construct a latent trust score from GPT-assisted pairwise comparisons of responses, following the approach outlined in the main text.
+We then estimate the treatment effect on the latent text-based trust score as a pre-registered robustness check.
+Human-in-the-loop validation will be conducted on a random sample of 100 pairwise comparisons.
+
+% ------------------------------------------------------------------
+% D. MULTIPLE TESTING
+% ------------------------------------------------------------------
+\subsection{Multiple Testing and Pre-Specified Outcome Families}
+\label{sec:multiple-testing}
+
+We organize outcomes into three pre-specified families to control familywise error rates.
+
+\begin{enumerate}
+    \item \textbf{Primary family} (confirmatory): \texttt{Trust\_General}, \texttt{Trust\_Self}, \texttt{Trust\_Hiring}.
+    We apply the Holm step-down correction \citep{Holm1979} within this family.
+    All three outcomes must be corrected jointly for H1 and H2, yielding $m = 6$ tests total (3 outcomes $\times$ 2 hypotheses).
+    We consider H1 (H2) supported if at least one corrected primary outcome is statistically significant in the expected direction, with the other outcomes showing consistent point estimates.
+
+    \item \textbf{Secondary family} (pre-registered but not primary): \texttt{Procedural\_Justice}, \texttt{Police\_Resources}.
+    We apply Holm correction within this family ($m = 4$ tests: 2 outcomes $\times$ 2 hypotheses).
+    Significant results in this family are reported but do not constitute confirmatory evidence.
+
+    \item \textbf{Exploratory} (no multiplicity correction): HTE / CATE results (Section~\ref{sec:hte}), mechanism tests (Section~\ref{sec:mechanisms}), open-ended text analysis.
+    These results are clearly labeled exploratory in all tables and figures.
+\end{enumerate}
+
+% ------------------------------------------------------------------
+% E. BALANCE CHECKS
+% ------------------------------------------------------------------
+\subsection{Randomization Validity and Balance Checks}
+
+Prior to any outcome analysis, we will verify the integrity of block randomization by estimating an omnibus F-test of the null hypothesis that pre-treatment covariates jointly have no association with treatment assignment.
+We regress each treatment indicator on the full set of pre-treatment covariates and report the $F$-statistic and $p$-value.
+Individual covariate balance is reported in a standardized difference table (Table~1 in the main text), following the reporting conventions of \citet{Imbens2015}.
+A $p$-value below 0.05 on the omnibus test will trigger a re-examination of the randomization procedure and a note in the paper; it will not alter the planned analysis.
+
+We also report the distribution of treatment completion times across arms as a manipulation check for differential respondent engagement.
+
+% ------------------------------------------------------------------
+% F. ATTRITION AND EXCLUSION RULES
+% ------------------------------------------------------------------
+\subsection{Attrition, Exclusions, and Intent-to-Treat Estimand}
+
+\paragraph{Primary estimand.}
+The primary estimand is the \textit{intent-to-treat} (ITT) effect: the average difference in potential outcomes under treatment vs.\ control assignment, regardless of actual treatment uptake or engagement quality.
+
+\paragraph{Pre-specified exclusion criteria.}
+We will exclude respondents who:
+\begin{enumerate}
+    \item Complete the survey in fewer than 120 seconds (approximately one-third of the expected minimum completion time of $\sim$7 minutes), indicating inattentive responding;
+    \item Fail any built-in attention check item (if included in the final instrument);
+    \item Do not provide consent (screened out before randomization).
+\end{enumerate}
+These criteria are applied before outcome analysis.
+All excluded respondents will be reported in a flow diagram following CONSORT guidelines.
+
+\paragraph{Attrition analysis.}
+If overall attrition exceeds 10\%, we will estimate differential attrition across arms using a logistic regression of completion on treatment assignment and covariates.
+Differential attrition would threaten internal validity; we will report this prominently and, if detected, estimate Lee bounds \citep{Lee2009} as a sensitivity check.
+
+\paragraph{Sensitivity analysis.}
+All primary results will be re-estimated on the \textit{full} sample (no exclusions applied) as a robustness check, reported in the appendix.
