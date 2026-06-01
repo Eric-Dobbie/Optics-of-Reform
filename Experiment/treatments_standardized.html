@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vignette Screenshot Studio - Standardized</title>
+<style>
+  body {
+    background-color: #f0f2f5;
+    font-family: sans-serif;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .vignette-label {
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+
+
+  .news-container {
+    width: 600px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Georgia', serif;
+    color: #333;
+    padding: 0;
+  }
+
+  .masthead {
+    background-color: #f8f9fa;
+    border-bottom: 3px solid #000;
+    padding: 15px 20px;
+    text-align: center;
+  }
+
+  .masthead h1 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 24px;
+    margin: 0;
+    color: #000;
+  }
+
+  .date-line {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: #666;
+    margin-top: 10px;
+    text-transform: uppercase;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 4px 0;
+  }
+
+  .article-body { padding: 25px 30px; }
+
+  .headline {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #111;
+  }
+
+  .meta {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+  }
+
+  .location { font-weight: bold; color: #444; }
+
+  .text {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .quote-box {
+    border-left: 4px solid #0056b3;
+    background-color: #f8faff;
+    padding: 10px 15px;
+    margin: 20px 0;
+    font-style: italic;
+    font-size: 17px;
+    color: #2c3e50;
+  }
+
+  /* Key legend */
+  .legend {
+    width: 600px;
+    background: #fff;
+    border: 1px solid #d1d5db;
+    padding: 16px 20px;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #444;
+    border-radius: 4px;
+  }
+  .legend strong { display: block; margin-bottom: 8px; font-size: 14px; color: #111; }
+  .legend .swatch {
+    display: inline-block;
+    width: 14px; height: 14px;
+    background: #fff3cd;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    margin-right: 6px;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Legend -->
+  <div class="legend">
+    <strong>Review Guide</strong>
+    <span class="swatch"></span> Highlighted text marks passages that were changed from the original to achieve cross-vignette parallelism. Remove the <code>.changed</code> CSS class before fielding.
+  </div>
+
+  <!-- ============================================================
+       CONTROL: Capacity / Staffing
+       ============================================================ -->
+  <div>
+    <div class="vignette-label">Control Condition (Capacity / Staffing)</div>
+    <div class="news-container">
+      <div class="masthead">
+        <h1>The Metro Chronicle</h1>
+        <div class="date-line">Local News · Politics · Crime · March 2026</div>
+      </div>
+      <div class="article-body">
+        <div class="headline">City Police Launch "Project Response" to Address Officer Shortage</div>
+        <div class="meta">By Staff Reports | <span class="location">METRO CITY</span></div>
+
+        <div class="text">
+          The Metropolitan Police Department announced today that it is launching
+          "Project Response," a mass hiring initiative <span class="changed">aimed at
+          expanding the number of officers on the force</span>.
+        </div>
+
+        <div class="text">
+          Citing <span class="changed">research that fully staffed departments build
+          stronger community safety</span>, the department <span class="changed">plans
+          to fill over 50 sworn officer positions</span> this fiscal year. Officials
+          stated the goal is to modernize the force and
+          <span class="changed">ensure the department has the capacity to serve the
+          city it protects</span>.
+        </div>
+
+        <div class="quote-box">
+          "<span class="changed">Modern policing requires adequate staffing.
+          Research shows that departments with full officer capacity are more effective
+          at reducing response times and improving safety outcomes for everyone.
+          We need qualified candidates ready</span> to serve and protect."
+          <br><br>
+          <span style="font-size:12px; font-weight:bold; font-style:normal;">
+            — Chief Michael Smith, Metropolitan Police
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TREATMENT 1: Black Officer Recruitment
+       ============================================================ -->
+  <div>
+    <div class="vignette-label">Treatment 1 (Black Officer Recruitment)</div>
+    <div class="news-container">
+      <div class="masthead">
+        <h1>The Metro Chronicle</h1>
+        <div class="date-line">Local News · Politics · Crime · March 2026</div>
+      </div>
+      <div class="article-body">
+        <div class="headline"><span class="changed">City Police Launch "Community Reflection" Initiative for Black Officers</span></div>
+        <div class="meta">By Staff Reports | <span class="location">METRO CITY</span></div>
+
+        <div class="text">
+          The Metropolitan Police Department announced today that it is launching
+          <span class="changed">"Community Reflection,"</span> a targeted hiring
+          initiative aimed at increasing the number of Black officers on the force.
+        </div>
+
+        <div class="text">
+          Citing <span class="changed">research that departments reflecting their
+          communities build stronger community safety</span>, the department will
+          <span class="changed">focus recruitment efforts on increasing Black
+          officer representation</span> this fiscal year. Officials stated the goal
+          is to modernize the force and
+          <span class="changed">ensure the department reflects the demographics
+          of the city it serves</span>.
+        </div>
+
+        <div class="quote-box">
+          "<span class="changed">Modern policing requires adequate representation.
+          Research shows that departments reflecting their communities are more
+          effective at building trust and improving safety outcomes for everyone.
+          We need qualified candidates with community ties ready</span> to serve
+          and protect."
+          <br><br>
+          <span style="font-size:12px; font-weight:bold; font-style:normal;">
+            — Chief Michael Smith, Metropolitan Police
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TREATMENT 2: Female Officer Recruitment
+       ============================================================ -->
+  <div>
+    <div class="vignette-label">Treatment 2 (Female Officer Recruitment)</div>
+    <div class="news-container">
+      <div class="masthead">
+        <h1>The Metro Chronicle</h1>
+        <div class="date-line">Local News · Politics · Crime · March 2026</div>
+      </div>
+      <div class="article-body">
+        <div class="headline"><span class="changed">City Police Launch "Equal Shield" Initiative to Hire More Women</span></div>
+        <div class="meta">By Staff Reports | <span class="location">METRO CITY</span></div>
+
+        <div class="text">
+          The Metropolitan Police Department announced today that it is launching
+          <span class="changed">"Equal Shield,"</span> a targeted hiring initiative
+          aimed at increasing the number of <span class="changed">women</span>
+          officers on the force.
+        </div>
+
+        <div class="text">
+          Citing <span class="changed">research that departments with more female
+          officers build stronger community safety</span>, the department will
+          <span class="changed">focus recruitment efforts on increasing female
+          officer representation</span> this fiscal year. Officials stated the goal
+          is to modernize the force and
+          <span class="changed">ensure the department reflects the demographics
+          of the city it serves</span>.
+        </div>
+
+        <div class="quote-box">
+          "<span class="changed">Modern policing requires adequate representation.
+          Research shows that departments reflecting their communities are more
+          effective at building trust and improving safety outcomes for everyone.
+          We need qualified candidates with community ties ready</span> to serve
+          and protect."
+          <br><br>
+          <span style="font-size:12px; font-weight:bold; font-style:normal;">
+            — Chief Michael Smith, Metropolitan Police
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
