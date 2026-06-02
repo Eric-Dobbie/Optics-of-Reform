@@ -30,11 +30,11 @@ This study investigates how racial and gender diversity in policing shapes publi
 \newpage
 \section{Introduction}
 
-Representation is important for bureaucratic performance as the descriptive background of bureaucratic agent helps to shape their worldview and, as a consequence, their behavior (\cite{kennedy2017race, shoub2021female, ba2021role}). Police, in particular, are highly visible bureaucratic actors, and their behavior is a matter of public interest as police-civilian interactions are among the most common interactions between mass publics and the government. 
+Representation is important for bureaucratic performance as the descriptive background of bureaucratic agent helps to shape their worldview and, as a consequence, their behavior (\cite{kennedy2017race, shoub2021female, ba2021role}). Police, in particular, are highly visible bureaucratic actors, and their behavior is a matter of public interest as police-civilian interactions are among the most common interactions between mass publics and the government (\cite{lipsky1980street}). The public is, in turn, often concerned with the descriptive makeup of police departments (\cite{peyton_beliefs_2022}), as the expectations of how police will interact with civilians are partially formed around these descriptive characteristics (\cite{mansbridge1999should, meier1975representative}).
 
-During a 2015 interview with BBC News, then Norfolk Police Department chief Michael Goldsmith described the importance his department needed to recruit Black police officers. ``If you don't have a diverse, inclusive workforce, you end up not making good decisions because you don't have everybody's perspective at the table.'' Norfolk PD was aiming to increase diversity in a police department with 16\% Black officers serving a population that was 43\% Black. (\cite{NorfolkPD_BBCRecruitment_2015})\footnote{Despite the announced effort to recruit more Black officers, according to the 2020 LEMAS survey, only 19\% of officers were identified as Black following Norfolk's recruiting effort  (\cite{LEMAS2020})}. Despite the evidence that representation effects outcomes, there is scarce work available on the effect of representation on trust in institutions.
+Police departments are also clearly aware of the importance of representation in policing, especially as it relates to race and gender. During a 2015 interview with BBC News, then Norfolk Police Department chief Michael Goldsmith described the importance his department needed to recruit Black police officers. ``If you don't have a diverse, inclusive workforce, you end up not making good decisions because you don't have everybody's perspective at the table.'' Norfolk PD was aiming to increase diversity in a police department with 16\% Black officers serving a population that was 43\% Black. (\cite{NorfolkPD_BBCRecruitment_2015})\footnote{Despite the announced effort to recruit more Black officers, according to the 2020 LEMAS survey, only 19\% of officers were identified as Black following Norfolk's recruiting effort  (\cite{LEMAS2020})}. Despite the evidence that representation effects outcomes, there is scarce work available on the effect of representation on trust in institutions. Existing scholarship on the effect of representation on trust in policing focuses on static levels of representations (\cite{stauffer2023police, riccucci2014representative}) or changes across departments rather than within departments
 
-Trust in police shapes perspectives and views of police legitimacy. As trust in police increases, improvements in police community relations can lead to better police work through information updating (\cite{mccall_resident_2019}). Many reform efforts are explicitly aimed at improving public trust in policing, mending strained relations between the community and police. These efforts include community oversight, technology, and training programs, all with the aim of improving policing outcomes and, especially in the case of community oversight, improving trust in policing. An alternative approach to improve police legitimacy is to change the \textit{who} the police are (\cite{meier2006gender, nicholson2017will}). By changing who makes up police departments through modified hiring practices police departments can change public perceptions.++
+Trust in police shapes perspectives and views of police legitimacy. As trust in police increases, improvements in police community relations can lead to better police work through information updating (\cite{mccall_resident_2019}). Many reform efforts are explicitly aimed at improving public trust in policing, mending strained relations between the community and police. These efforts include community oversight, technology, and training programs, all with the aim of improving policing outcomes and, especially in the case of community oversight, improving trust in policing. An alternative approach to improve police legitimacy is to change the \textit{who} the police are (\cite{meier2006gender, nicholson2017will}). By changing who makes up police departments through modified hiring practices police departments can change public perceptions.
 
 \section{Police Diversity and Trust}
 
@@ -44,7 +44,7 @@ Rather than focusing on the level of diversity in a police department, I focus o
 
 
 \subsection{Descriptive Representation}
-In classic studies of descriptive representation, the focus has been on elected officials rather than bureaucratic actors (CITE SOME STUFF). This distinction makes sense as a starting point, as the mass public has the ability to  participate in the selection of these officials through elections. In contrast, bureaucrats are selected, in the case of police departments, through more standard recruiting and hiring practice. The public can only change these practices indirectly, through elections for city council or public pressure.
+In classic studies of descriptive representation, the focus has been on elected officials rather than bureaucratic actors (\cite{mansbridge1999should, mansbridge2003rethinking, dovi2002preferable}). This distinction makes sense as a starting point, as the mass public has the ability to  participate in the selection of these officials through elections. In contrast, bureaucrats are selected, in the case of police departments, through more standard recruiting and hiring practice. The public can only change these practices indirectly, through elections for city council or public pressure.
 
 \subsection{Procedural Justice and Legitimacy}
 Procedural justice, or the expectation of citizens that they will be treated fairly, is important for police legitimacy (\cite{hinds2007public, tyler2004enhancing}). Procedural justice can usually be broken down into four core components: (1) the expectation that citizens will participate before authorities make a decision, (2) perceived neutrality in decision making, (3) the authority demonstrated respect for the citizen during interactions, and (4) the authority conveys that they have good motives (\cite{goodman2010four,mazerolle2013procedural, tyler2002trust, tyler2011procedural}). \citet{mazerolle2013procedural} conducted a review of the literature, showing that, across 28 studies of procedural justice outcomes of satisfaction improved when police used tactics that align with the components of procedural justice.
@@ -87,7 +87,7 @@ I plan to field this survey through Prolific with a target sample size of 1,200 
 
 I will utilize a block randomization approach. In block randomization, respondents are assigned to strata, or blocks, based on prognostic covariates, in this case race and gender, and assigned to treatment within blocks. This ensures a balanced sample across all blocking variables in the treatment and control conditions. Participants within each block will be assigned to each treatment arm with equal probability.
 
-Respondents read a manipulated news article about a department’s hiring strategy, varying the focus of the recruiting drive. An example of the treatment vignettes is shown in Figure XX. All conditions can be found in Appendix XX.
+Respondents read a manipulated news article about a department’s hiring strategy, varying the focus of the recruiting drive. The treatment vignettes displayed to respondents can be found in Appendix \ref{app:vignettes}
 
 In order to best reflect real life conditions, all treatment vignettes have been modified based on real articles describing hiring efforts of police departments. 
 
@@ -109,11 +109,17 @@ To test the primary hypotheses laid out in this PAP, I will utilize and Ordinary
 
 \begin{equation}
     Trust = \beta_0 + \beta_1 D + \beta_2 Black\_Respondent +  \beta_3 Black\_Respondent\times D  + \gamma \mathbf{X} + \epsilon
-\end{equation}\ref{eq:h1}
+\end{equation}\label{eq:h1}
 
-Where $Black\_Respondent$ is self-reported respondent race, $D$ is treatment status, $X$ are covariates, and $\epsilon$ is the error term. The constant term, $\beta_0$, gives the baseline evaluation for the control group among the excluded category for measured covariates. $\beta_1$ gives the treatment effect of observing a racial diversity focused hiring drive, and $\beta_2$ is the difference in treatment effects between Black and non-Black respondents.
+Where $Black\_Respondent$ is self-reported respondent race, taking on a value of 1 if the respondent self-identifies as Black and 0 otherwise, $D$ is treatment status, $X$ are covariates, and $\epsilon$ is the error term. The constant term, $\beta_0$, gives the baseline evaluation for the control group among the excluded category for measured covariates. $\beta_1$ gives the treatment effect of observing a racial diversity focused hiring drive, and $\beta_2$ is the difference in treatment effects between Black and non-Black respondents.
 
-To test H2, I will utilize the subsample assigned to 
+To test H2, I will utilize the subsample assigned to the treatment arm that signals gender diversity focused hiring and the control group. 
+
+\begin{equation}
+    Trust = \beta_0 + \beta_1 D + \beta_2 Female\_Respondent +  \beta_3 Female\_Respondent\times D  + \gamma \mathbf{X} + \epsilon
+\end{equation}\label{eq:h1}
+
+Where $Female\_Respondent$ is self-reported respondent gender, taking on a value of 1 if the respondent self-identifies as female and 0 otherwise, $D$ is treatment status, $X$ are covariates, and $\epsilon$ is the error term. Similar to Model \ref{eq:h1}, the constant term, $\beta_0$, gives the baseline evaluation for the control group among the excluded category for measured covariates. $\beta_1$ gives the treatment effect of observing a gender diversity focused hiring drive, and $\beta_2$ is the difference in treatment effects between female and other respondents.
 
 \subsection{Exploratory Covariate Analysis}
 
@@ -129,7 +135,7 @@ In practice, conducting the number of pairwise-comparisons necessary to construc
 
 \subsection{Mechanism Tests}
 
-Using a similar approach, it is possible to construct a mechanism test with the open-ended responses. Rather than rating the responses directly for trust, the responses will be rated for plausible causal mechanisms. There are a variety of possible causal chains that could be activated by the treatments. First, it is possible that there is an identity activated effect, whereby the presence of Black or female officers drives changes in expectations. Second, it is possible that the effects are driven by reform intent. By signaling any type fo reform, the department indicates a willingness to change their practices, leading to a more trustworthy department. Finally, it is possible that cynicism drives the result. The signal of reform, be it more female officers or more Black officer, is seen as an empty promise and trust remains the same or decreases as a result of the signal of reform. Each of these mechanisms can be identified using text analysis, so the same Bradley Terry model can be applied for measurement of mechanism tests. 
+Using a similar approach, I will construct mechanism tests with the open-ended responses. Rather than rating the responses directly for trust, the responses will be rated for plausible causal mechanisms. There are a variety of possible causal chains that could be activated by the treatments. First, it is possible that there is an identity activated effect, whereby the presence of Black or female officers drives changes in expectations. Second, it is possible that the effects are driven by reform intent. By signaling any type fo reform, the department indicates a willingness to change their practices, leading to a more trustworthy department. Finally, it is possible that cynicism drives the result. The signal of reform, be it more female officers or more Black officer, is seen as an empty promise and trust remains the same or decreases as a result of the signal of reform. Each of these mechanisms can be identified using text analysis, so the same Bradley Terry model can be applied for measurement of mechanism tests. 
 
 \subsection{Validation}
 
@@ -146,7 +152,10 @@ In order to validate the work of the LLM, I plan to utilize a human-in-the-loop 
 \bibliography{Policing}
 %\printbibliography
 
+\appendix
 
+\section*{Appendix}
 
+\subsection*{Vignettes}\label{app:vignette}
 
 \end{document}
